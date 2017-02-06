@@ -2,29 +2,224 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import LoginDialog, MainForm, RyuSocketClient
 
 def on_logined():
-    form.show()
+	form.show()
 
 def on_send(msg):
-    socket.send(login.user_name + "> "+ msg)
+	socket.send(login.user_name + "> " + msg)
 
 def on_received(msg):
-    form.ui.textBrowser.append(msg)
+	form.ui.textBrowser.append(msg)
 
 if __name__ == "__main__":
-    import sys
+	import sys
 
-    app = QtWidgets.QApplication(sys.argv)
+	app = QtWidgets.QApplication(sys.argv)
 
-    login = LoginDialog.LoginDialog()
-    form = MainForm.MainForm()
-    socket = RyuSocketClient.RyuSocketClient()
+	login = LoginDialog.LoginDialog()
+	form = MainForm.MainForm()
+	socket = RyuSocketClient.RyuSocketClient()
 
-    socket.connect( "127.0.0.1", 1234)
+	login.setOnLogined(on_logined)
+	form.setOnSend(on_send)
+	socket.setOnReceived(on_received)
 
-    login.setOnLogined(on_logined)
-    form.setOnSend(on_send)
-    socket.setOnReceived(on_received)
+	login.show()
 
-    login.show()
+	socket.connect("127.0.0.1", 1234)
 
-    sys.exit(app.exec_())
+	sys.exit(app.exec_())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+import LoginDialog, MainForm, RyuSocketClient
+
+def on_logined():
+	form.show()
+
+def on_send(msg):
+	socket.send(login.user_name + "> " + msg)
+
+def on_received(msg):
+	form.ui.textBrowser.append(msg)
+
+if __name__ == "__main__":
+	import sys
+
+	app = QtWidgets.QApplication(sys.argv)
+
+	login = LoginDialog.LoginDialog()
+	form = MainForm.MainForm()
+	socket = RyuSocketClient.RyuSocketClient()
+
+	login.setOnLogined(on_logined)
+	form.setOnSend(on_send)
+	socket.setOnReceived(on_received)
+
+	login.show()
+
+	socket.connect("127.0.01", 1234)
+
+	sys.exit(app.exec_())
+
+
+
